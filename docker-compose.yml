@@ -1,0 +1,13 @@
+version: '3'
+services:
+  fastapi:
+    build:
+      context: ./
+      dockerfile: Dockerfile.cpu
+    environment:
+      - LOG_LEVEL=DEBUG
+    ports:
+      - "5000:8888"
+    volumes:
+      - ./Error.log:/code/log
+

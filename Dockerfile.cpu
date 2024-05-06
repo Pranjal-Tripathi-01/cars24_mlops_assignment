@@ -1,0 +1,8 @@
+
+FROM python:3.10.3-slim-bullseye
+COPY . .
+RUN apt-get -y update
+RUN apt-get install -y python3-dev python3-pip libffi-dev libssl-dev libcairo2 libcairo2-dev libgirepository1.0-dev pkg-config
+RUN pip install --no-cache-dir  -r ./requirements.txt
+RUN apt-get install ffmpeg libsm6 libxext6 tree  -y
+CMD ["uvicorn", "mri_tool:mlops_assignment", "--host", "0.0.0.0", "--port", "8888"]
